@@ -27,7 +27,7 @@ export default function KorapayPayments({
       currency: payCurrency,
       customer: {
         name: currentUser?.email || "Scoredash User",
-        email: currentUser?.email || "coongames8@gmail.com",
+        email: currentUser?.email || "greencate01@gmail.com",
       },
       onSuccess: () => {
         setIsProcessing(false);

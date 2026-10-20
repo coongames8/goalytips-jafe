@@ -20,7 +20,7 @@ export default function PostDetail({ data, userData }) {
 
   useEffect(() => {
     if (currentUser !== null) {
-      if (currentUser.email === 'kkibetkkoir@gmail.com' || currentUser.email === 'arovanzgamez@gmail.com') {
+      if (currentUser.email === 'kkibetkkoir@gmail.com' || currentUser.email === 'greencate01@gmail.com') {
         setIsAdmin(true);
         setIsPremium(true);
       } else {
