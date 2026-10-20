@@ -51,7 +51,7 @@ export default function EditUser({ setUserData }) {
 		if (user) {
 			setEmail(user.email);
 			setUsername(user.username);
-			setIsPremium(user.isPremium);
+			setIsPremium(userData?.isPremium ?? false);
 			user.subscription
 				? setSubscription(user.subscription)
 				: setSubscription("Free");

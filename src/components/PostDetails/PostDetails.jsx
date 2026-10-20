@@ -25,7 +25,7 @@ export default function PostDetail({ data, userData }) {
         setIsPremium(true);
       } else {
         setIsAdmin(false);
-        setIsPremium(userData.isPremium);
+		setIsPremium(userData?.isPremium ?? false);
       }
     }
   }, [currentUser]);
