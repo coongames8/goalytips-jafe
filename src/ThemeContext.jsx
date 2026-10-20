@@ -4,14 +4,14 @@ export const ThemeContext = createContext();
 
 export const ThemeContextProvider = ({ children }) => {
   const [theme, setTheme] = useState(() => {
-    const saved = localStorage.getItem("goalytips-theme");
+    const saved = localStorage.getItem("Scoredash-theme");
     if (saved === "light" || saved === "dark") return saved;
     return "dark";
   });
 
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
-    localStorage.setItem("goalytips-theme", theme);
+    localStorage.setItem("Scoredash-theme", theme);
   }, [theme]);
 
   const toggleTheme = () => {

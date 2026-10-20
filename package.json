@@ -1,8 +1,8 @@
 {
-	"name": "Goalytips",
+	"name": "Scoredash",
 	"private": true,
 	"version": "0.0.0",
-	"homepage": "https://Goalytips.onrender.com/",
+	"homepage": "https://scoredash.onrender.com/",
 	"proxy": "*",
 	"type": "module",
 	"scripts": {

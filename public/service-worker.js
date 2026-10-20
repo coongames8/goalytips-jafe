@@ -1,4 +1,4 @@
-const CACHE_NAME = "Goalytips-cache";
+const CACHE_NAME = "Scoredash-cache";
 const urlsToCache = ["/", "/index.html", "/manifest.json", "/logo512.png"];
 
 window.self.addEventListener("install", (event) => {

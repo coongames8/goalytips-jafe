@@ -48,7 +48,7 @@ const Footer = ({ user }) => {
 		<footer className="footer-glass">
 			<div className="footer-content">
 				<div className="footer-links">
-					<p className="copyright">&copy; Goalytips {new Date().getFullYear()}</p>
+					<p className="copyright">&copy; Scoredash {new Date().getFullYear()}</p>
 					<NavLink to="/about#faq" className="footer-link">
 						FAQ
 					</NavLink>

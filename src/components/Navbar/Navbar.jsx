@@ -39,8 +39,8 @@ const Navbar1 = () => {
         <header className={`glass-navbar ${scrolled ? 'scrolled' : ''}`}>
             <div className="navbar-container">
                 <NavLink to="/" className='logo' onClick={closeMenu}>
-                    <img src={Logo} alt='Goalytips logo' />
-                    <span className="brand-name">Goalytips</span>
+                    <img src={Logo} alt='Scoredash logo' />
+                    <span className="brand-name">Scoredash</span>
                 </NavLink>
 
                 <nav className={`desktop-nav ${mobileOpen ? 'mobile-open' : ''}`}>

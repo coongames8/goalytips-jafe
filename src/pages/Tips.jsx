@@ -105,7 +105,7 @@ export default function Tips({ userData }) {
 
 	return (
 		<div className="tips">
-			<AppHelmet title={"Goalytips"} location={"/"} />
+			<AppHelmet title={"Scoredash"} location={"/"} />
 			<div className="container">
 				<div className="filter-wrapper">
 					<p>{formattedDate}</p>

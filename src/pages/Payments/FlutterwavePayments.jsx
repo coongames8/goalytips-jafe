@@ -30,7 +30,7 @@ export default function FlutterwavePayments({
       customer: {
         email: currentUser?.email || '',
         phone_number: currentUser?.phone || '',
-        name: currentUser?.email?.split('@')[0] || 'Goalytips User',
+        name: currentUser?.email?.split('@')[0] || 'Scoredash User',
       },
       customizations: {
         title: `${getSubscriptionPeriod()} VIP Subscription`,

@@ -52,7 +52,7 @@ export const faqs = [
 ]
 
 export const socialLinks = {
-	telegramChannel: "https://t.me/Goalytips_ke",
+	telegramChannel: "https://t.me/Scoredash_ke",
 	whatsappChannel: "https://whatsapp.com/channel/0029VbBG7n2FCCoXiyEFGJ0U",
 	facebookPage: "https://www.facebook.com/share/16dqHtqVM4/",
 };
