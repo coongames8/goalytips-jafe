@@ -27,28 +27,27 @@ export const signInUser = (email, password, setError) => {
   return;
 }
 
-export const registerUser = (username, email, password, locality, setSuccess, setError) => {
-  createUserWithEmailAndPassword(auth, email, password).then(async (userCredential) => {
+export const registerUser = async (username, email, password, locality, setSuccess, setError) => {
+  try {
+    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
     const user = userCredential.user;
+
     const userDocRef = doc(db, "users", user.email);
+
     await setDoc(userDocRef, {
       email: user.email,
       username: username,
       isPremium: false,
-      locality,
+      locality: locality,
       subscription: null
-    }, { merge: true }).then(async (response) => {
-      setSuccess(`User with ${user.email} has been registered successfully`)
-    }).catch(async (error) => {
-      const errorMessage = await error.message;
-      setError(errorMessage);
-    });
-  }).catch(async (error) => {
-    const errorMessage = await error.message;
-    setError(errorMessage);
-  });
-  return;
-}
+    }, { merge: true });
+
+    setSuccess(`User with ${user.email} has been registered successfully`);
+
+  } catch (error) {
+    setError(error.message);
+  }
+};
 
 
 export const updateUserLocality = async (userId, locality) => {
