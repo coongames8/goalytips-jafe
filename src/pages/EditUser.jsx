@@ -51,12 +51,13 @@ export default function EditUser({ setUserData }) {
 		if (user) {
 			setEmail(user.email);
 			setUsername(user.username);
-			setIsPremium(userData?.isPremium ?? false);
+			setIsPremium(user?.isPremium ?? false);
 			user.subscription
 				? setSubscription(user.subscription)
 				: setSubscription("Free");
 			user.subDate && setSubDate(toDateTimeLocal(user.subDate));
 		}
+		
 	}, [user]);
 
 	useEffect(() => {
@@ -74,7 +75,7 @@ export default function EditUser({ setUserData }) {
 				subDate,
 			})
 				.then((response) => {
-					getUser(user.email, setUserData);
+					getUser(user.email, );
 				})
 				.catch((error) => {
 					alert(error.message);
