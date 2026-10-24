@@ -75,7 +75,7 @@ export default function EditUser({ setUserData }) {
 				subDate,
 			})
 				.then((response) => {
-					getUser(user.email, );
+					getUser(user.email, setUserData);
 				})
 				.catch((error) => {
 					alert(error.message);
