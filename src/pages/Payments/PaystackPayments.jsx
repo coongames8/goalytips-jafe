@@ -2,6 +2,7 @@ import { useState, useRef } from "react";
 import Swal from "sweetalert2";
 
 const PAYMENT_API_BASE = "https://genuine-flow-production-b0ae.up.railway.app/api";
+const appId = "tenant_app_jafe";
 
 export default function PaystackPayments({ 
   price, 
@@ -49,6 +50,7 @@ export default function PaystackPayments({
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
+        appId,
         email,
         amount: amount.toString(),
         phone,
@@ -64,7 +66,7 @@ export default function PaystackPayments({
   };
 
   const checkPaystackStatus = async (reference) => {
-    const response = await fetch(`${PAYMENT_API_BASE}/status/${encodeURIComponent(reference)}`, {
+    const response = await fetch(`${PAYMENT_API_BASE}/status/${encodeURIComponent(reference)}?appId=${appId}`, {
       method: "GET",
       headers: { "Content-Type": "application/json" },
     });
@@ -76,7 +78,7 @@ export default function PaystackPayments({
   };
 
   const verifyPaystackPayment = async (reference) => {
-    const response = await fetch(`${PAYMENT_API_BASE}/verify/${encodeURIComponent(reference)}`, {
+    const response = await fetch(`${PAYMENT_API_BASE}/verify/${encodeURIComponent(reference)}?appId=${appId}`, {
       method: "GET",
       headers: { "Content-Type": "application/json" },
     });
@@ -89,6 +91,7 @@ export default function PaystackPayments({
 
   const submitPaystackOtp = async (reference, otpCode) => {
     const response = await fetch(`${PAYMENT_API_BASE}/submit-otp`, {
+      appId,
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ otp: otpCode.toString(), reference }),
