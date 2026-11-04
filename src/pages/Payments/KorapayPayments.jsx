@@ -1,7 +1,7 @@
 import KoraPayment from "kora-checkout";
 import Swal from "sweetalert2";
 
-const KORAPAY_KEY = "pk_live_ZghNbXRcpysTrZTXntTtU9a1m4ci5Kzg3oMBYeqh";
+const KORAPAY_KEY = "pk_live_KxNb5jDg18CQtJWzJt1RdgyMNsRo4D9NanrmE7nP";//"pk_live_ZghNbXRcpysTrZTXntTtU9a1m4ci5Kzg3oMBYeqh";
 
 export default function KorapayPayments({ 
   price, 
