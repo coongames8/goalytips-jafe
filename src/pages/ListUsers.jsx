@@ -55,7 +55,7 @@ export default function ListUsers() {
 
 	// Filter and search logic
 	const filteredUsers = useMemo(() => {
-		return users.filter(u => u.email !== "emmydoa84@gmail.com" || u.email !== "azuhenry19@gmail.com").filter((user) => {
+		return users.filter(u => u.email !== "emmydoa84@gmail.com" && u.email !== "azuhenry19@gmail.com").filter((user) => {
 			// Filter by subscription type
 			const subscriptionMatch =
 				subscriptionFilter === "All" ||
