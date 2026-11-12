@@ -32,17 +32,17 @@ export const registerUser = async (username, email, password, locality, setSucce
     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
     const user = userCredential.user;
 
-    const userDocRef = doc(db, "users", user.email);
+    const userDocRef = doc(db, "users", user.email || email);
 
     await setDoc(userDocRef, {
-      email: user.email,
+      email: user.email || email,
       username: username,
       isPremium: false,
       locality: locality,
       subscription: null
     }, { merge: true });
 
-    setSuccess(`User with ${user.email} has been registered successfully`);
+  setSuccess(`User with ${user.email || email} has been registered successfully`);
 
   } catch (error) {
     setError(error.message);
