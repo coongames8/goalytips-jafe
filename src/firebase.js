@@ -156,17 +156,61 @@ export const addContact = async (data, setSuccess, setError) => {
 export const addTip = async (data, setError, setLoading) => {
   setLoading(true);
   const timestamp = Date.now(); // milliseconds since epoch
-  const customId = (
-    data.home.trim() +
-    data.away.trim() +
-    data.date.split("/").join("") +
-    timestamp
-  ).toLowerCase();
-
+  //const customId = (data.home.trim() + data.away.trim() + data.date.split("/").join("") + timestamp).toLowerCase();
+  const customId = (data.home + data.away + data.date.split("/").join("")).replace(/\s+/g, "");
   const tipsDocRef = doc(db, "tips", customId);
+
+  const pick = data.pick.trim().toLowerCase();
+
+  let type = "1X2";
+  
+  switch (pick) {
+    case "w1":
+    case "w2":
+    case "x":
+      type = "1X2";
+      break;
+  
+    case "ov 2.5":
+    case "ov2.5":
+    case "un 2.5":
+    case "un2.5":
+      type = "OV_UN";
+      break;
+  
+    case "gg":
+    case "g-g":
+      type = "GG";
+      break;
+  
+    case "dc1or2":
+    case "dc1orx":
+    case "dc2orx":
+    case "dc 12":
+    case "dc 1x":
+    case "dc 2x":
+    case "dc12":
+    case "dc1x":
+    case "dc2x":
+      type = "DC";
+      break;
+  
+    default:
+      type = "CS"; // Or whatever fallback you prefer
+      break;
+  }
+  
+
 
   await setDoc(tipsDocRef, {
     ...data
+  }).then(async () => {
+    try {
+      const response = await axios.post('https://goalkings-api-production.up.railway.app/api/tips', {id: customId, type, ...data, premium: false});
+    } catch (error) {
+      // Axios throws an error for any non-2xx status code
+      console.error('Error:', error.response?.data || error.message);
+    }
   }).then(async (docRef) => {
     alert("tip added")
     window.location.replace(`/`);
@@ -182,6 +226,13 @@ export const updateTip = async (id, data, setError, setLoading, setData) => {
   const tipsDocRef = doc(db, "tips", id);
   await updateDoc(tipsDocRef, {
     ...data
+  }).then(async () => {
+    try {
+      const response = await axios.patch(`https://goalkings-api-production.up.railway.app/api/tips/${id}`, {...data, premium: false});
+    } catch (error) {
+      // Axios throws an error for any non-2xx status code
+      console.error('Error:', error.response?.data || error.message);
+    }
   }).then(async (docRef) => {
     alert("Tip updated successfully!");
 
